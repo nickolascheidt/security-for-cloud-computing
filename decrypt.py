@@ -50,12 +50,12 @@ def enCBC(k, iv, c):
      print("\n")
      print(hexad.upper())
 
-def textToHex(text):
+def textToHex():
         print("\nplease, type the text you want to turn into hex: ")
         text = input()
         hex_text = text.encode('utf-8')
         result = hexlify(hex_text).decode('utf-8')
-        print(result.upper())
+        return result.upper()
 
 def use():
         key_hex, iv_hex, ciphertext_hex = getData()
@@ -108,7 +108,8 @@ def menu():
                 else:
                     print("invalid option, please try again")
         elif choiceMain == '3':
-            text = textToHex(text)
+            answer = textToHex()
+            print(answer)
         elif choiceMain == '0':
             print("exiting the program..")
             break
