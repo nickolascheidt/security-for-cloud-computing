@@ -28,7 +28,8 @@ def deCBC(k, iv, c):
     print(plaintext_utf8)
 
 def deCTR(k, iv, c):
-    cipher = AES.new(k, AES.MODE_CTR, nonce=iv)
+    ctr = Counter.new(128, initial_value=int.from_bytes(iv, byteorder='big'))
+    cipher = AES.new(k, AES.MODE_CTR, counter=ctr)
     plaintext = cipher.decrypt(c)
     plaintext_utf8 = plaintext.decode('utf-8')
     print("\n")
